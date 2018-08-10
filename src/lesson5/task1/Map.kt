@@ -76,18 +76,21 @@ fun buildWordSet(text: List<String>): MutableSet<String> {
 }
 
 /**
- * Простая
+ * Средняя
  *
  * Объединить два ассоциативных массива `mapA` и `mapB` с парами
  * "имя"-"номер телефона" в итоговый ассоциативный массив, склеивая
  * значения для повторяющихся ключей через запятую.
+ * В случае повторяющихся *ключей* значение из mapA должно быть
+ * перед значением из mapB.
+ *
  * Повторяющиеся *значения* следует добавлять только один раз.
  *
  * Например:
  *   mergePhoneBooks(
  *     mapOf("Emergency" to "112", "Police" to "02"),
  *     mapOf("Emergency" to "911", "Police" to "02")
- *   ) -> mapOf("Emergency" to "112, 911", "Police", "02")
+ *   ) -> mapOf("Emergency" to "112, 911", "Police" to "02")
  */
 fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> = TODO()
 
@@ -101,7 +104,7 @@ fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<S
  *   buildGrades(mapOf("Марат" to 3, "Семён" to 5, "Михаил" to 5))
  *     -> mapOf(5 to listOf("Семён", "Михаил"), 3 to listOf("Марат"))
  */
-fun buildGrades(map: Map<String, Int>): Map<Int, List<String>> = TODO()
+fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> = TODO()
 
 /**
  * Простая
@@ -147,7 +150,7 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
 /**
  * Сложная
  *
- * Для заданного ассоциативного массива друзей через одно рукопожатие `friends`
+ * Для заданного ассоциативного массива знакомых через одно рукопожатие `friends`
  * необходимо построить его максимальное расширение по рукопожатиям, то есть,
  * для каждого человека найти всех людей, с которыми он знаком через любое
  * количество рукопожатий.
@@ -186,4 +189,66 @@ fun propagateHandshakes(friends: Map<String, Set<String>>): Map<String, Set<Stri
  */
 fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Unit = TODO()
 
-// TODO: map tasks
+/**
+ * Простая
+ *
+ * Для двух списков людей найти людей, встречающихся в обоих списках
+ */
+fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = TODO()
+
+/**
+ * Средняя
+ *
+ * Для заданного набора символов определить, можно ли составить из него
+ * указанное слово (регистр символов игнорируется)
+ *
+ * Например:
+ *   canBuildFrom(listOf('a', 'b', 'o'), "baobab") -> true
+ */
+fun canBuildFrom(chars: List<Char>, word: String): Boolean = TODO()
+
+/**
+ * Средняя
+ *
+ * Найти в заданном списке повторяющиеся элементы и вернуть
+ * ассоциативный массив с информацией о числе повторений
+ * для каждого повторяющегося элемента.
+ * Если элемент встречается только один раз, включать его в результат
+ * не следует.
+ *
+ * Например:
+ *   extractRepeats(listOf("a", "b", "a")) -> mapOf("a" to 2)
+ */
+fun extractRepeats(list: List<String>): Map<String, Int> = TODO()
+
+/**
+ * Средняя
+ *
+ * Для заданного списка слов определить, содержит ли он анаграммы
+ * (два слова являются анаграммами, если одно можно составить из второго)
+ *
+ * Например:
+ *   hasAnagrams(listOf("тор", "свет", "рот")) -> true
+ */
+fun hasAnagrams(words: List<String>): Boolean = TODO()
+
+/**
+ * Сложная
+ *
+ * Для заданного списка неотрицательных чисел и числа определить,
+ * есть ли в списке пара чисел таких, что их сумма равна заданному числу.
+ * Если да, верните их индексы в виде Pair<Int, Int>;
+ * если нет, верните пару Pair(-1, -1).
+ *
+ * Индексы в результате должны следовать в порядке (меньший, больший).
+ *
+ * Постарайтесь сделать ваше решение как можно более эффективным,
+ * используя то, что вы узнали в данном уроке.
+ *
+ * Например:
+ *   findSumOfTwo(listOf(1, 2, 3), 4) -> Pair(0, 2)
+ *   findSumOfTwo(listOf(1, 2, 3), 6) -> Pair(-1, -1)
+ */
+fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> = TODO()
+
+// TODO: map/set tasks

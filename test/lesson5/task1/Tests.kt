@@ -100,7 +100,7 @@ class Tests {
     }
 
     @Test
-    @Tag("Easy")
+    @Tag("Normal")
     fun mergePhoneBooks() {
         assertEquals(
                 mapOf("Emergency" to "112"),
@@ -139,6 +139,7 @@ class Tests {
                 mapOf<Int, List<String>>(),
                 buildGrades(mapOf())
         )
+        // TODO: Sort the values here or let the students do it?
         assertEquals(
                 mapOf(5 to listOf("Семён", "Михаил"), 3 to listOf("Марат")),
                 buildGrades(mapOf("Марат" to 3, "Семён" to 5, "Михаил" to 5))
@@ -240,6 +241,73 @@ class Tests {
 
         subtractOf(from, mapOf("a" to "z"))
         assertEquals(from, mapOf("b" to "c"))
+    }
+
+    @Test
+    @Tag("Easy")
+    fun whoAreInBoth() {
+        assertEquals(
+                emptyList<String>(),
+                whoAreInBoth(emptyList(), emptyList())
+        )
+        assertEquals(
+                listOf("Marat"),
+                whoAreInBoth(listOf("Marat", "Mikhail"), listOf("Marat", "Kirill"))
+        )
+        assertEquals(
+                emptyList<String>(),
+                whoAreInBoth(listOf("Marat", "Mikhail"), listOf("Sveta", "Kirill"))
+        )
+    }
+
+    @Test
+    @Tag("Normal")
+    fun canBuildFrom() {
+        assertFalse(canBuildFrom(emptyList(), "foo"))
+        assertTrue(canBuildFrom(listOf('a', 'b', 'o'), "baobab"))
+        assertFalse(canBuildFrom(listOf('a', 'm', 'r'), "Marat"))
+    }
+
+    @Test
+    @Tag("Normal")
+    fun extractRepeats() {
+        assertEquals(
+                emptyMap<String, Int>(),
+                extractRepeats(emptyList())
+        )
+        assertEquals(
+                mapOf("a" to 2),
+                extractRepeats(listOf("a", "b", "a"))
+        )
+        assertEquals(
+                emptyMap<String, Int>(),
+                extractRepeats(listOf("a", "b", "c"))
+        )
+    }
+
+    @Test
+    @Tag("Normal")
+    fun hasAnagrams() {
+        assertFalse(hasAnagrams(emptyList()))
+        assertTrue(hasAnagrams(listOf("рот", "свет", "тор")))
+        assertFalse(hasAnagrams(listOf("рот", "свет", "код", "дверь")))
+    }
+
+    @Test
+    @Tag("Hard")
+    fun findSumOfTwo() {
+        assertEquals(
+                Pair(-1, -1),
+                findSumOfTwo(emptyList(), 1)
+        )
+        assertEquals(
+                Pair(0, 2),
+                findSumOfTwo(listOf(1, 2, 3), 4)
+        )
+        assertEquals(
+                Pair(-1, -1),
+                findSumOfTwo(listOf(1, 2, 3), 6)
+        )
     }
 
     // TODO: map task tests
